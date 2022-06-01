@@ -5,27 +5,33 @@ struct Memory final {
     using MemoryCell = unsigned char;
 
     MemoryCell get() const {
-        return {}; // TODO
+        return *it_;
     }
 
     void set(MemoryCell const value) {
-        // TODO
+      *it_ = value % 256;
     }
 
     void increment() {
-        // TODO
+      *it_ = (*it_+ 1)%256;
     }
 
     void decrement() {
-        // TODO
+      *it_ = (*it_- 1)%256;
     }
 
     void moveLeft() {
-        // TODO
+			if(it_<=memory_.begin()) 
+				it_ = memory_.end();
+			else
+      	it_--;
     }
 
     void moveRight() {
-        // TODO
+			if(it_>=memory_.end()) 
+				it_ = memory_.begin();
+			else
+      	it_ ++;
     }
 
     Memory()

@@ -14,21 +14,43 @@ TEST_CASE( "getting after setting gives the same value", "[memory]" ) {
     REQUIRE( memory.get() == value );
 }
 
-#if 0
 TEST_CASE( "increment", "[memory]" ) {
-    // TODO
+    Memory memory;
+    int beg = memory.get();
+    memory.increment();
+    memory.increment();
+    memory.increment();
+	REQUIRE( memory.get() == beg + 3);
 }
 
 
 TEST_CASE( "decrement", "[memory]" ) {
-    // TODO
+    Memory memory;
+		memory.set(10);
+    int beg = memory.get();
+    memory.decrement();
+    memory.decrement();
+    memory.decrement();
+	REQUIRE( memory.get() == 7);
 }
 
 TEST_CASE( "memory position can be moved around", "[memory]" ) {
-    // TODO
+    Memory memory;
+
+    memory.set(1);
+    memory.moveRight();
+    memory.set(2);
+    memory.moveRight();
+    memory.set(3);
+
+    REQUIRE(memory.get() == 3);
+    memory.moveLeft();
+    REQUIRE(memory.get() == 2);
+    memory.moveLeft();
+    REQUIRE(memory.get() == 1);
+    
 }
 
-#endif
 
 SCENARIO( "getting after setting gives the same value", "[memory-scen]" ) {
 
